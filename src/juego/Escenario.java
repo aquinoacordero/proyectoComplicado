@@ -18,7 +18,7 @@ public class Escenario extends JFrame {
 
     boolean cargador = true;
     int contador = 0;
-    int contBalas = 6;
+    int contBalas = 2;
     int contVida = 3;
 
     public final int longImg = 40;
@@ -43,9 +43,11 @@ public class Escenario extends JFrame {
     CrearEscenario crea = new CrearEscenario();
     ReproductorIntro play = new ReproductorIntro();
     Reproducir playD = new Reproducir();
+    Menu menu;
 
     public Escenario(int opc) throws JavaLayerException, FileNotFoundException, InterruptedException {
-
+        Menu menu = new Menu(opc);
+        
         initComponents();
 
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/IconoG.png")).getImage());
@@ -298,7 +300,9 @@ public class Escenario extends JFrame {
         System.out.println(evt);
         System.out.println(contBalas);
         switch (evt.getKeyCode()) {
-
+            case 27:
+                setVisible(false);
+                menu.
             case 32:
                 if (contBalas > 0) {
                     playD.sonidoDisp();
@@ -308,7 +312,7 @@ public class Escenario extends JFrame {
                     disp.movdisparo(escenario, escMatriz, panelEscenario, arriba, abajo, derecha, izquierda);
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "NO HAY MUNICION");
+                    playD.sonidoVacio();
                 }
 
                 break;
@@ -412,12 +416,14 @@ public class Escenario extends JFrame {
 
                             System.out.println("C: " + contador);
                         } else {
-                            playD.sonidoDaño();
                             contVida--;
+                            playD.sonidoDaño();
+
                         }
                     } else {
-                        playD.sonidoDaño();
                         contVida--;
+                        playD.sonidoDaño();
+
                     }
                 } else {
                     //sonido 

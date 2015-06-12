@@ -1,11 +1,14 @@
 package juego;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 import javazoom.jl.decoder.JavaLayerException;
 
 /**
@@ -19,7 +22,8 @@ public class Disparo {
     int y;
     boolean colision;
     int distancia = 8;
-    
+    static boolean ban = true;
+
     Reproducir playD = new Reproducir();
 
     public int getX() {
@@ -39,8 +43,8 @@ public class Disparo {
 
     }
 
-    public void movdisparo(JLabel[][] escenario, int[][] escMatriz, JPanel panelEscenario,
-            boolean arriba, boolean abajo, boolean derecha, boolean izquierda) throws FileNotFoundException, JavaLayerException, InterruptedException {
+    public void movdisparo(final JLabel[][] escenario, int[][] escMatriz, JPanel panelEscenario,
+            boolean arriba, final boolean abajo, boolean derecha, boolean izquierda) throws FileNotFoundException, JavaLayerException, InterruptedException {
 
         if (arriba == true) {
 
@@ -51,13 +55,11 @@ public class Disparo {
                 if (escMatriz[x][y - p] == Contenedor.muro) {
                     playD.sonidoDispM();
                     p = 8;
-                }
-                if (escMatriz[x][y - p] == Contenedor.zombieD) {
+                } else if (escMatriz[x][y - p] == Contenedor.zombieD) {
                     escMatriz[x][y - p] = Contenedor.sueloSangre;
                     escenario[x][y - p].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
-                }
-                if (escMatriz[x][y - p] == Contenedor.zombieI) {
+                } else if (escMatriz[x][y - p] == Contenedor.zombieI) {
                     escMatriz[x][y - p] = Contenedor.sueloSangre;
                     escenario[x][y - p].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
@@ -66,6 +68,7 @@ public class Disparo {
             }
         }
         if (abajo == true) {
+            //escenario[x][y].setIcon(new ImageIcon(getClass().getResource("/Imagenes/PAb.gif")));
 
             for (int p = 1; p < distancia; p++) {
                 System.out.println("Posicion bala X" + x);
@@ -108,7 +111,8 @@ public class Disparo {
             }
 
         }
-        if (izquierda == true) {
+        if (izquierda
+                == true) {
 
             for (int p = 1; p < distancia; p++) {
                 System.out.println("Posicion bala X" + x);
