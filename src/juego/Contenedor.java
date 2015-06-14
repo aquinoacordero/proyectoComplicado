@@ -19,7 +19,8 @@ public class Contenedor {
 
     public final static int zombieD = 20;
     public final static int zombieI = 21;
-    public final static int boss = 22;
+    public final static int bossD = 22;
+    public final static int bossI = 23;
 
     public final static int sigM = 7;
     public final static int sigX = 8;

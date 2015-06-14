@@ -20,44 +20,48 @@ public class Zombies {
 
         this.poszombie();
 
-        
-        if (escMatriz[zombieX][zombieY] != Contenedor.muro) {
-           if (escMatriz[zombieX][zombieY] != Contenedor.moneda) { 
-               if (escMatriz[zombieX][zombieY] != Contenedor.municion) { 
-                   if (escMatriz[zombieX][zombieY] != Contenedor.muroR) { 
-             escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieI));
-           
-            escMatriz[zombieX][zombieY] = Contenedor.zombieI;
-            
+        if (escMatriz[zombieX][zombieY] != Contenedor.bossD) {
+            if (escMatriz[zombieX][zombieY] != Contenedor.bossI) {
+                if (escMatriz[zombieX][zombieY] != Contenedor.muro) {
+                    if (escMatriz[zombieX][zombieY] != Contenedor.moneda) {
+                        if (escMatriz[zombieX][zombieY] != Contenedor.municion) {
+                            if (escMatriz[zombieX][zombieY] != Contenedor.muroR) {
+                                escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieI));
 
-            escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieI));
-               }
-           }
-        }
+                                escMatriz[zombieX][zombieY] = Contenedor.zombieI;
+
+                                escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieI));
+                            }
+                        }
+                    }
+                }
+            }
         }
 
     }
-    
+
     public void genzombie2(JLabel[][] escenario, int[][] escMatriz) {
 
         this.poszombie();
 
-        
-        if (escMatriz[zombieX][zombieY] != Contenedor.muro) {
-           if (escMatriz[zombieX][zombieY] != Contenedor.moneda) { 
-               if (escMatriz[zombieX][zombieY] != Contenedor.municion) { 
-                   if (escMatriz[zombieX][zombieY] != Contenedor.muroR) { 
-             escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieD));
-           
-            escMatriz[zombieX][zombieY] = Contenedor.zombieD;
-            
+        if (escMatriz[zombieX][zombieY] != Contenedor.bossD) {
+            if (escMatriz[zombieX][zombieY] != Contenedor.bossD) {
+                if (escMatriz[zombieX][zombieY] != Contenedor.muro) {
+                    if (escMatriz[zombieX][zombieY] != Contenedor.moneda) {
+                        if (escMatriz[zombieX][zombieY] != Contenedor.municion) {
+                            if (escMatriz[zombieX][zombieY] != Contenedor.muroR) {
+                                escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieD));
 
-            escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieD));
-               }
-           }
+                                escMatriz[zombieX][zombieY] = Contenedor.zombieD;
+
+                                escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieD));
+                            }
+                        }
+                    }
+
+                }
+            }
         }
-
-    }
     }
 
 }

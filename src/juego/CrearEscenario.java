@@ -61,8 +61,10 @@ public class CrearEscenario {
                 return new ImageIcon(getClass().getResource("/Imagenes/BI.png"));
             case Contenedor.disparo:
                 return new ImageIcon(getClass().getResource("/Imagenes/D.png"));
-            case Contenedor.boss:
-                return new ImageIcon(getClass().getResource("/Imagenes/boss.png"));
+            case Contenedor.bossI:
+                return new ImageIcon(getClass().getResource("/Imagenes/bossI.png"));
+            case Contenedor.bossD:
+                return new ImageIcon(getClass().getResource("/Imagenes/bossD.png"));
             default:
                 return new ImageIcon(getClass().getResource("/Imagenes/C.png"));
         }

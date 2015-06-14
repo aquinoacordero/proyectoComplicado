@@ -76,6 +76,9 @@ public class Disparo {
                     escMatriz[x][y - p] = Contenedor.sueloSangre;
                     escenario[x][y - p].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
+                } else if (escMatriz[x][y - p] == Contenedor.bossI) {
+                    playD.sonidoBoss();
+
                 }
 
             }
@@ -110,6 +113,9 @@ public class Disparo {
                     escMatriz[x][y + p] = Contenedor.sueloSangre;
                     escenario[x][y + p].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
+                } else if (escMatriz[x][y + p] == Contenedor.bossI) {
+                    playD.sonidoBoss();
+
                 }
 
             }
@@ -144,6 +150,9 @@ public class Disparo {
                     escMatriz[x + p][y] = Contenedor.sueloSangre;
                     escenario[x + p][y].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
+                } else if (escMatriz[x + p][y] == Contenedor.bossI) {
+                    playD.sonidoBoss();
+
                 }
 
             }
@@ -179,6 +188,9 @@ public class Disparo {
                     escMatriz[x - p][y] = Contenedor.sueloSangre;
                     escenario[x - p][y].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
+                } else if (escMatriz[x - p][y] == Contenedor.bossI) {
+                    playD.sonidoBoss();
+
                 }
 
             }

@@ -42,13 +42,15 @@ public class Escenario extends JFrame {
     boolean derecha = true;
     boolean izquierda = false;
 
-    public Timer timer;
-    public Timer timer2;
+    public Timer genZombies;
+    public Timer genZombies2;
+    public Timer genboss;
 
     private int[][] escMatriz = new int[numColumnas][numFilas];
     JLabel[][] escenario = new JLabel[numColumnas][numFilas];
+    
+    Boss boss = new Boss();
     Zombies zom = new Zombies();
-
     Disparo disp = null;
     CargarMapa map = new CargarMapa();
     CrearEscenario crea = new CrearEscenario();
@@ -78,29 +80,48 @@ public class Escenario extends JFrame {
 
         Vida();
 
-        timer = new Timer(5000, new ActionListener() {
+        genZombies = new Timer(4000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 zom.genzombie(escenario, escMatriz);
                 zom.genzombie2(escenario, escMatriz);
                 
                 if (contador == 4) {
-                    timer.stop();
-                    timer2.start();
+                    genZombies.stop();
+                    genZombies2.start();
                 }
             }
         });
 
-        timer2 = new Timer(2500, new ActionListener() {
+        genZombies2 = new Timer(3000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 zom.genzombie(escenario, escMatriz);
                 zom.genzombie2(escenario, escMatriz);
-
+                
+                
+            }
+        });
+        
+        genboss = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                contVida=boss.genBoss(escenario, escMatriz, contVida);
+                
+                try {
+                    Vida();
+                } catch (Exception ex) {
+                    Logger.getLogger(Escenario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                if (contVida < 1) {
+                    genboss.stop();
+                }
             }
         });
 
-        timer.start();
+        genZombies.start();
+        genboss.start();
 
         //play.sonidoDisp();
     }
@@ -386,7 +407,8 @@ public class Escenario extends JFrame {
 
                 escenario[personajeX][personajeY].setIcon(crea.obtenerImagen(Contenedor.personajeI));
                 System.out.println(cargador);
-
+                
+                if (escMatriz[personajeX - 1][personajeY] != Contenedor.bossI) {
                 if (escMatriz[personajeX - 1][personajeY] != Contenedor.muroR) {
                     if (escMatriz[personajeX - 1][personajeY] != Contenedor.muro) {
                         if (escMatriz[personajeX - 1][personajeY] != Contenedor.zombieD) {
@@ -494,6 +516,11 @@ public class Escenario extends JFrame {
                 } else {
                     //sonido 
                 }
+                }else {
+                            contVida--;
+                            playD.sonidoDaño();
+
+                        }
 
                 Vida();
                 System.out.println(contVida);
@@ -507,6 +534,7 @@ public class Escenario extends JFrame {
 
                 escenario[personajeX][personajeY].setIcon(crea.obtenerImagen(Contenedor.personajeD));
 
+                if (escMatriz[personajeX + 1][personajeY] != Contenedor.bossI) {
                 if (escMatriz[personajeX + 1][personajeY] != Contenedor.muroR) {
                     if (escMatriz[personajeX + 1][personajeY] != Contenedor.muro) {
                         if (escMatriz[personajeX + 1][personajeY] != Contenedor.zombieD) {
@@ -612,6 +640,10 @@ public class Escenario extends JFrame {
                 } else {
                     //sonido 
                 }
+                }else {
+                            playD.sonidoDaño();
+                            contVida--;
+                        }
 
                 Vida();
                 System.out.println(contVida);
@@ -624,7 +656,8 @@ public class Escenario extends JFrame {
                 izquierda = false;
 
                 escenario[personajeX][personajeY].setIcon(crea.obtenerImagen(Contenedor.personajeA));
-
+                
+                if (escMatriz[personajeX][personajeY - 1] != Contenedor.bossI) {
                 if (escMatriz[personajeX][personajeY - 1] != Contenedor.muroR) {
                     if (escMatriz[personajeX][personajeY - 1] != Contenedor.muro) {
                         if (escMatriz[personajeX][personajeY - 1] != Contenedor.zombieD) {
@@ -730,6 +763,10 @@ public class Escenario extends JFrame {
                 } else {
                     //sonido 
                 }
+                }else {
+                            playD.sonidoDaño();
+                            contVida--;
+                        }
 
                 Vida();
                 System.out.println(contVida);
@@ -742,7 +779,8 @@ public class Escenario extends JFrame {
                 izquierda = false;
 
                 escenario[personajeX][personajeY].setIcon(crea.obtenerImagen(Contenedor.personajeAb));
-
+                
+                if (escMatriz[personajeX][personajeY + 1] != Contenedor.bossI) {
                 if (escMatriz[personajeX][personajeY + 1] != Contenedor.muroR) {
                     if (escMatriz[personajeX][personajeY + 1] != Contenedor.muro) {
                         if (escMatriz[personajeX][personajeY + 1] != Contenedor.zombieD) {
@@ -848,6 +886,10 @@ public class Escenario extends JFrame {
                 } else {
                     //sonido 
                 }
+                }else {
+                            playD.sonidoDaño();
+                            contVida--;
+                        }
 
                 Vida();
                 System.out.println(contVida);
