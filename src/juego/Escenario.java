@@ -60,6 +60,8 @@ public class Escenario extends JFrame {
     public Escenario(int opc) throws JavaLayerException, FileNotFoundException, InterruptedException {
         this.opc=opc;
         
+        play.sonido();
+        
         initComponents();
 
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/IconoG.png")).getImage());
@@ -154,7 +156,7 @@ public class Escenario extends JFrame {
                 panelEscenario.add(escenario[3][20]);
                 
                 JOptionPane.showMessageDialog(null, "HAS GANADO");
-                insertar(contador);
+                //insertar(contador);
                 juego.ejecutar(opc+1);
                 setVisible(false);
                 
@@ -182,7 +184,7 @@ public class Escenario extends JFrame {
             panelEscenario.add(escenario[7][20]);
 
             JOptionPane.showMessageDialog(null, "HAS MUERTO");
-            insertar(contador);
+            //insertar(contador);
             setVisible(false);
             Menu menu = new Menu(opc);
 
