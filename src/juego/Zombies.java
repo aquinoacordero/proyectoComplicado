@@ -2,10 +2,6 @@ package juego;
 
 import javax.swing.JLabel;
 
-/**
- *
- * @author Miguel
- */
 public class Zombies {
 
     CrearEscenario crea = new CrearEscenario();

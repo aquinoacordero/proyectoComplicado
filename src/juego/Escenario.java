@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javazoom.jl.decoder.JavaLayerException;
+import static juego.BaseDatos.insertar;
 import static juego.Juego.opc;
 
 public class Escenario extends JFrame {
@@ -53,10 +54,12 @@ public class Escenario extends JFrame {
     CrearEscenario crea = new CrearEscenario();
     ReproductorIntro play = new ReproductorIntro();
     Reproducir playD = new Reproducir();
+    Juego juego = new Juego();
     
 
     public Escenario(int opc) throws JavaLayerException, FileNotFoundException, InterruptedException {
-
+        this.opc=opc;
+        
         initComponents();
 
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/IconoG.png")).getImage());
@@ -116,7 +119,7 @@ public class Escenario extends JFrame {
         }
     }
 
-    private void Marcador() {
+    private void Marcador() throws JavaLayerException, FileNotFoundException, InterruptedException {
         switch (contador) {
             case 0:
                 escenario[3][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/cero.png")));
@@ -151,8 +154,9 @@ public class Escenario extends JFrame {
                 panelEscenario.add(escenario[3][20]);
                 
                 JOptionPane.showMessageDialog(null, "HAS GANADO");
+                insertar(contador);
+                juego.ejecutar(opc+1);
                 setVisible(false);
-                Menu menu = new Menu(opc+1);
                 
                 break;
                    
@@ -178,6 +182,7 @@ public class Escenario extends JFrame {
             panelEscenario.add(escenario[7][20]);
 
             JOptionPane.showMessageDialog(null, "HAS MUERTO");
+            insertar(contador);
             setVisible(false);
             Menu menu = new Menu(opc);
 
