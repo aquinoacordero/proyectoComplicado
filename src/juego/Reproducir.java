@@ -148,4 +148,26 @@ public class Reproducir {
             }
         }.start();
     }
+    public void sonidoZombie() throws FileNotFoundException,
+            JavaLayerException, InterruptedException {
+        final Player pl = new Player(new FileInputStream(
+                "C:/Users/Aitor/Desktop/Programas/proyecto/Juego/src/Sonidos/zombie.mp3"));
+
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (true) {
+                        if (!pausa) {
+                            if (!pl.play(1)) {
+                                break;
+                            }
+                        }
+                    }
+                } catch (JavaLayerException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
 }

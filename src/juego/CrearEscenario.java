@@ -17,7 +17,6 @@ public class CrearEscenario {
     public CrearEscenario() {
 
     }
-    
 
     public int[][] crearEscenario(int opc) {
         esc = map.devMapa(opc);
@@ -32,6 +31,10 @@ public class CrearEscenario {
                 return new ImageIcon(getClass().getResource("/Imagenes/CS.png"));
             case Contenedor.muro:
                 return new ImageIcon(getClass().getResource("/Imagenes/M.png"));
+            case Contenedor.muroR:
+                return new ImageIcon(getClass().getResource("/Imagenes/MR.png"));
+            case Contenedor.muroP:
+                return new ImageIcon(getClass().getResource("/Imagenes/MP.png"));
             case Contenedor.personajeD:
                 return new ImageIcon(getClass().getResource("/Imagenes/PD.png"));
             case Contenedor.personajeI:
@@ -58,6 +61,8 @@ public class CrearEscenario {
                 return new ImageIcon(getClass().getResource("/Imagenes/BI.png"));
             case Contenedor.disparo:
                 return new ImageIcon(getClass().getResource("/Imagenes/D.png"));
+            case Contenedor.boss:
+                return new ImageIcon(getClass().getResource("/Imagenes/boss.png"));
             default:
                 return new ImageIcon(getClass().getResource("/Imagenes/C.png"));
         }

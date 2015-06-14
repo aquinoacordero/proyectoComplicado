@@ -17,14 +17,15 @@ import javazoom.jl.decoder.JavaLayerException;
  */
 public class Disparo {
 
-    CrearEscenario crea = new CrearEscenario();
     int x;
     int y;
+    int cons;
     boolean colision;
     int distancia = 8;
     static boolean ban = true;
 
     Reproducir playD = new Reproducir();
+    CrearEscenario crea = new CrearEscenario();
 
     public int getX() {
         return x;
@@ -36,14 +37,15 @@ public class Disparo {
 
     int contBalas;
 
-    public Disparo(int personajeX, int personajeY) {
+    public Disparo(int personajeX, int personajeY, int consistencia) {
 
+        this.cons = consistencia;
         this.x = personajeX;
         this.y = personajeY;
 
     }
 
-    public void movdisparo(final JLabel[][] escenario, int[][] escMatriz, JPanel panelEscenario,
+    public int movdisparo(final JLabel[][] escenario, int[][] escMatriz, JPanel panelEscenario,
             boolean arriba, final boolean abajo, boolean derecha, boolean izquierda) throws FileNotFoundException, JavaLayerException, InterruptedException {
 
         if (arriba == true) {
@@ -55,11 +57,22 @@ public class Disparo {
                 if (escMatriz[x][y - p] == Contenedor.muro) {
                     playD.sonidoDispM();
                     p = 8;
+                } else if (escMatriz[x][y - p] == Contenedor.muroR) {
+                    playD.sonidoDispM();
+                    cons--;
+                    if (cons == 0) {
+                        cons = 3;
+                        escMatriz[x][y - p] = Contenedor.muroP;
+                        escenario[x][y - p].setIcon(crea.obtenerImagen(Contenedor.muroP));
+                    }
+                    p = 8;
                 } else if (escMatriz[x][y - p] == Contenedor.zombieD) {
+                    playD.sonidoZombie();
                     escMatriz[x][y - p] = Contenedor.sueloSangre;
                     escenario[x][y - p].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
                 } else if (escMatriz[x][y - p] == Contenedor.zombieI) {
+                    playD.sonidoZombie();
                     escMatriz[x][y - p] = Contenedor.sueloSangre;
                     escenario[x][y - p].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
@@ -77,11 +90,23 @@ public class Disparo {
                 if (escMatriz[x][y + p] == Contenedor.muro) {
                     playD.sonidoDispM();
                     p = 8;
+                } else if (escMatriz[x][y + p] == Contenedor.muroR) {
+                    playD.sonidoDispM();
+                    cons--;
+
+                    if (cons == 0) {
+                        cons = 3;
+                        escMatriz[x][y + p] = Contenedor.muroP;
+                        escenario[x][y + p].setIcon(crea.obtenerImagen(Contenedor.muroP));
+                    }
+                    p = 8;
                 } else if (escMatriz[x][y + p] == Contenedor.zombieD) {
+                    playD.sonidoZombie();
                     escMatriz[x][y + p] = Contenedor.sueloSangre;
                     escenario[x][y + p].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
                 } else if (escMatriz[x][y + p] == Contenedor.zombieI) {
+                    playD.sonidoZombie();
                     escMatriz[x][y + p] = Contenedor.sueloSangre;
                     escenario[x][y + p].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
@@ -98,11 +123,24 @@ public class Disparo {
                 if (escMatriz[x + p][y] == Contenedor.muro) {
                     playD.sonidoDispM();
                     p = 8;
+                } else if (escMatriz[x + p][y] == Contenedor.muroR) {
+                    System.out.println(cons);
+                    playD.sonidoDispM();
+                    cons--;
+
+                    if (cons == 0) {
+                        cons = 3;
+                        escMatriz[x + p][y] = Contenedor.muroP;
+                        escenario[x + p][y].setIcon(crea.obtenerImagen(Contenedor.muroP));
+                    }
+                    p = 8;
                 } else if (escMatriz[x + p][y] == Contenedor.zombieD) {
+                    playD.sonidoZombie();
                     escMatriz[x + p][y] = Contenedor.sueloSangre;
                     escenario[x + p][y].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
                 } else if (escMatriz[x + p][y] == Contenedor.zombieI) {
+                    playD.sonidoZombie();
                     escMatriz[x + p][y] = Contenedor.sueloSangre;
                     escenario[x + p][y].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
@@ -121,11 +159,23 @@ public class Disparo {
                 if (escMatriz[x - p][y] == Contenedor.muro) {
                     playD.sonidoDispM();
                     p = 8;
+                } else if (escMatriz[x - p][y] == Contenedor.muroR) {
+                    playD.sonidoDispM();
+                    cons--;
+
+                    if (cons == 0) {
+                        cons = 3;
+                        escMatriz[x - p][y] = Contenedor.muroP;
+                        escenario[x - p][y].setIcon(crea.obtenerImagen(Contenedor.muroP));
+                    }
+                    p = 8;
                 } else if (escMatriz[x - p][y] == Contenedor.zombieD) {
+                    playD.sonidoZombie();
                     escMatriz[x - p][y] = Contenedor.sueloSangre;
                     escenario[x - p][y].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
                 } else if (escMatriz[x - p][y] == Contenedor.zombieI) {
+                    playD.sonidoZombie();
                     escMatriz[x - p][y] = Contenedor.sueloSangre;
                     escenario[x - p][y].setIcon(crea.obtenerImagen(Contenedor.sueloSangre));
                     p = 8;
@@ -133,7 +183,7 @@ public class Disparo {
 
             }
         }
-
+        return cons;
     }
 
     public int cargador(int contBalas) {
