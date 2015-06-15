@@ -83,9 +83,10 @@ public final class Menu implements ActionListener {
             }
 
             try {
-
-                juego.ejecutar(opc);
+                
                 marco.setVisible(false);
+                juego.ejecutar(opc);
+                
 
             } catch (Exception ex) {
 
@@ -93,8 +94,9 @@ public final class Menu implements ActionListener {
         }else if (e.getSource() == salir){
             System.exit(0);
         }else {
-            control.controles();
+            
             marco.setVisible(false);
+            control.controles();
         }
     }
 

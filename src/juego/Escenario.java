@@ -23,7 +23,7 @@ public class Escenario extends JFrame {
     private int personajeY = 2;
 
     boolean cargador = true;
-    int contador = 0;
+    int contador = 6;
     int contBalas = 6;
     int contVida = 3;
     int consistencia = 3;
@@ -182,8 +182,10 @@ public class Escenario extends JFrame {
                 
                 JOptionPane.showMessageDialog(null, "HAS GANADO");
                 //insertar(contador);
-                juego.ejecutar(opc+1);
+                
                 setVisible(false);
+                juego.ejecutar(opc+1);
+                
                 
                 break;
                    
