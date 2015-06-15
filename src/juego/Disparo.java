@@ -78,7 +78,7 @@ public class Disparo {
                     p = 8;
                 } else if (escMatriz[x][y - p] == Contenedor.bossI) {
                     playD.sonidoBoss();
-
+                    p=8;
                 }
 
             }
@@ -115,7 +115,7 @@ public class Disparo {
                     p = 8;
                 } else if (escMatriz[x][y + p] == Contenedor.bossI) {
                     playD.sonidoBoss();
-
+                    p=8;
                 }
 
             }
@@ -152,7 +152,7 @@ public class Disparo {
                     p = 8;
                 } else if (escMatriz[x + p][y] == Contenedor.bossI) {
                     playD.sonidoBoss();
-
+                    p=8;
                 }
 
             }
@@ -190,13 +190,14 @@ public class Disparo {
                     p = 8;
                 } else if (escMatriz[x - p][y] == Contenedor.bossI) {
                     playD.sonidoBoss();
-
+                    p=8;
                 }
 
             }
         }
         return cons;
     }
+    
 
     public int cargador(int contBalas) {
 
