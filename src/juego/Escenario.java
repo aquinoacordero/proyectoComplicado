@@ -535,8 +535,9 @@ public class Escenario extends JFrame {
                     //sonido 
                 }
                 }else {
-                            contVida=0;
+                    
                             playD.sonidoDaño();
+                            contVida=0;
 
                         }
                 if (bossesino==false){
@@ -786,7 +787,7 @@ public class Escenario extends JFrame {
                 }
                 }else {
                             playD.sonidoDaño();
-                            contVida--;
+                            contVida=0;
                         }
 
                 if (bossesino==false){
@@ -911,7 +912,7 @@ public class Escenario extends JFrame {
                 }
                 }else {
                             playD.sonidoDaño();
-                            contVida--;
+                            contVida=0;
                         }
 
                 if (bossesino==false){
