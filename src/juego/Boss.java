@@ -6,6 +6,7 @@ public class Boss {
 
     int contVida;
     CrearEscenario crea = new CrearEscenario();
+ 
     private int bossX = 18;
     private int bossY = 11;
 
@@ -45,16 +46,19 @@ public class Boss {
 
         }
         if (escMatriz[bossX - 1][bossY] == Contenedor.personajeA) {
-            if (escMatriz[bossX - 1][bossY] == Contenedor.personajeAb) {
-                if (escMatriz[bossX - 1][bossY] == Contenedor.personajeD) {
-                    if (escMatriz[bossX - 1][bossY] == Contenedor.personajeI) {
-                        this.contVida = contVida - 3;
-                    }
-                }
-                this.contVida = contVida - 3;
-            }
-            this.contVida = contVida - 3;
+            this.contVida = contVida = 0;
         }
+        if (escMatriz[bossX - 1][bossY] == Contenedor.personajeAb) {
+            this.contVida = contVida = 0;
+        }
+        if (escMatriz[bossX - 1][bossY] == Contenedor.personajeD) {
+            this.contVida = contVida = 0;
+        }
+        if (escMatriz[bossX - 1][bossY] == Contenedor.personajeI) {
+            this.contVida = contVida = 0;
+        }
+
         return contVida;
+
     }
 }

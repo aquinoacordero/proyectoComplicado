@@ -41,6 +41,7 @@ public class Escenario extends JFrame {
     boolean abajo = false;
     boolean derecha = true;
     boolean izquierda = false;
+    boolean bossesino=false;
 
     public Timer genZombies;
     public Timer genZombies2;
@@ -80,7 +81,7 @@ public class Escenario extends JFrame {
 
         Vida();
 
-        genZombies = new Timer(4000, new ActionListener() {
+        genZombies = new Timer(3000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 zom.genzombie(escenario, escMatriz);
@@ -93,7 +94,7 @@ public class Escenario extends JFrame {
             }
         });
 
-        genZombies2 = new Timer(3000, new ActionListener() {
+        genZombies2 = new Timer(1500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 zom.genzombie(escenario, escMatriz);
@@ -103,22 +104,25 @@ public class Escenario extends JFrame {
             }
         });
         
+        if(opc==4){
         genboss = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 contVida=boss.genBoss(escenario, escMatriz, contVida);
-                
+                  
+                if (contVida < 1) {
+                   genboss.stop();
+                   bossesino=true;
+                }
                 try {
                     Vida();
                 } catch (Exception ex) {
                     Logger.getLogger(Escenario.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                if (contVida < 1) {
-                    genboss.stop();
-                }
+              
             }
         });
+        }
 
         genZombies.start();
         genboss.start();
@@ -197,10 +201,22 @@ public class Escenario extends JFrame {
         } else if (contVida == 2) {
             escenario[8][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/LN.gif")));
             panelEscenario.add(escenario[9][20]);
+            escenario[7][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/L.gif")));
+            panelEscenario.add(escenario[9][20]);
+            escenario[6][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/L.gif")));
+            panelEscenario.add(escenario[7][20]);
         } else if (contVida == 1) {
+            escenario[8][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/LN.gif")));
+            panelEscenario.add(escenario[9][20]);
             escenario[7][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/LN.gif")));
             panelEscenario.add(escenario[9][20]);
+            escenario[6][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/L.gif")));
+            panelEscenario.add(escenario[7][20]);
         } else if (contVida == 0) {
+             escenario[8][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/LN.gif")));
+            panelEscenario.add(escenario[9][20]);
+            escenario[7][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/LN.gif")));
+            panelEscenario.add(escenario[9][20]);
             escenario[6][20].setIcon(new ImageIcon(getClass().getResource("/Imagenes/LN.gif")));
             panelEscenario.add(escenario[7][20]);
 
@@ -517,13 +533,14 @@ public class Escenario extends JFrame {
                     //sonido 
                 }
                 }else {
-                            contVida--;
+                            contVida=0;
                             playD.sonidoDaño();
 
                         }
-
+                if (bossesino==false){
                 Vida();
                 System.out.println(contVida);
+                }
                 break;
             case 39:    //der
 
@@ -642,11 +659,13 @@ public class Escenario extends JFrame {
                 }
                 }else {
                             playD.sonidoDaño();
-                            contVida--;
+                            contVida=0;
                         }
 
+                if (bossesino==false){
                 Vida();
                 System.out.println(contVida);
+                }
                 break;
             case 38:    //arr
 
@@ -768,8 +787,10 @@ public class Escenario extends JFrame {
                             contVida--;
                         }
 
+                if (bossesino==false){
                 Vida();
                 System.out.println(contVida);
+                }
                 break;
             case 40:    //ab
 
@@ -891,8 +912,10 @@ public class Escenario extends JFrame {
                             contVida--;
                         }
 
+                if (bossesino==false){
                 Vida();
                 System.out.println(contVida);
+                }
                 break;
         }
 

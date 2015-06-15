@@ -24,9 +24,8 @@ public class Zombies {
             if (escMatriz[zombieX][zombieY] != Contenedor.bossI) {
                 if (escMatriz[zombieX][zombieY] != Contenedor.muro) {
                     if (escMatriz[zombieX][zombieY] != Contenedor.moneda) {
-                        if (escMatriz[zombieX][zombieY] != Contenedor.municion) {
+                        if (escMatriz[zombieX][zombieY] != Contenedor.bala) {
                             if (escMatriz[zombieX][zombieY] != Contenedor.muroR) {
-                                escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieI));
 
                                 escMatriz[zombieX][zombieY] = Contenedor.zombieI;
 
@@ -48,9 +47,8 @@ public class Zombies {
             if (escMatriz[zombieX][zombieY] != Contenedor.bossD) {
                 if (escMatriz[zombieX][zombieY] != Contenedor.muro) {
                     if (escMatriz[zombieX][zombieY] != Contenedor.moneda) {
-                        if (escMatriz[zombieX][zombieY] != Contenedor.municion) {
+                        if (escMatriz[zombieX][zombieY] != Contenedor.bala) {
                             if (escMatriz[zombieX][zombieY] != Contenedor.muroR) {
-                                escenario[zombieX][zombieY].setIcon(crea.obtenerImagen(Contenedor.zombieD));
 
                                 escMatriz[zombieX][zombieY] = Contenedor.zombieD;
 
